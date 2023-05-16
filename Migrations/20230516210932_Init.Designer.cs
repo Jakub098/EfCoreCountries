@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CountryApp.Migrations
 {
     [DbContext(typeof(MyProjectContext))]
-    [Migration("20230516204826_Init")]
+    [Migration("20230516210932_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -57,9 +57,6 @@ namespace CountryApp.Migrations
                         .HasColumnName("id_country");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CapitalId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()

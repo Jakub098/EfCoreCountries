@@ -5,6 +5,10 @@ namespace CountryApp.Models
 {
     public class MyProjectContext : DbContext
     {
+        public MyProjectContext()
+        {
+
+        }
 
         public MyProjectContext(DbContextOptions<MyProjectContext> options) : base(options)
         {
@@ -14,6 +18,14 @@ namespace CountryApp.Models
         public DbSet<Country> Countries { get; set; }
         public DbSet<Capital> Capitals { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-3LCARMF;Initial Catalog=country_db;Integrated Security=True;TrustServerCertificate=True");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -35,6 +47,7 @@ namespace CountryApp.Models
                 });
 
         }
+
 
     }
 }

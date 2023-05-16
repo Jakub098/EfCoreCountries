@@ -1,20 +1,21 @@
 using CountryApp.Models;
+using CountryApp.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<MyProjectContext>(
+    option => option.UseSqlServer(builder.Configuration.GetConnectionString("MyConnectionString"))
+    );
+builder.Services.AddScoped<ICountryService, CountryService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<MyProjectContext>(
-    option => option.UseSqlServer(builder.Configuration.GetConnectionString("MyConnectionString"))
-    );
-/*
- * builder.Services.AddScoped<IApplicationBuilder, ApplicationBuilder>();
- */
+
+
 
 var app = builder.Build();
 

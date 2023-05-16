@@ -16,8 +16,7 @@ namespace CountryApp.Migrations
                 {
                     id_country = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    countryName = table.Column<string>(type: "varchar(64)", nullable: false),
-                    CapitalId = table.Column<int>(type: "int", nullable: false)
+                    countryName = table.Column<string>(type: "varchar(64)", nullable: false)
                 },
                 constraints: table =>
                 {

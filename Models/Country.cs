@@ -8,6 +8,5 @@ namespace CountryApp.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public Capital Capital { get; set; }
-        public int CapitalId { get; set; }
     }
 }

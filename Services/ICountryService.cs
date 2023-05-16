@@ -5,7 +5,7 @@ namespace CountryApp.Services
 {
     public interface ICountryService
     {
-        public Task<IEnumerable<CountryResponse>> GetCountryAsync();
+        public Task<IEnumerable<CountryResponse>> GetCountries();
         public Task<int> DeleteCountry(int idCountry);
     }
 }
