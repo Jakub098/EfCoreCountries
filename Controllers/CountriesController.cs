@@ -1,4 +1,5 @@
-﻿using CountryApp.Services;
+﻿using CountryApp.DTO.Responses;
+using CountryApp.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CountryApp.Controllers
@@ -15,9 +16,15 @@ namespace CountryApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult getCountries()
+        public async Task<IActionResult> getCountries()
         {
-            return Ok(_countryService.GetCountries());
+            return Ok(await _countryService.GetCountries());
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<CountryResponse>> getCountries2()
+        {
+            return await _countryService.GetCountries();
         }
 
     }
